@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Solicitudes por Grupo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #444;
+    }
+
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    thead {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    thead th {
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    tbody td {
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a {
+      text-decoration: none;
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      table {
+        width: 100%;
+        font-size: 12px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<h1>Solicitudes por Grupo</h1>
+<form th:action="@{/solicitudes}" method="get" style="text-align: center; margin-bottom: 20px;">
+  <label for="idGrupo">Buscar por ID del Grupo:</label>
+  <input type="text" id="idGrupo" name="idGrupo" placeholder="Ingrese ID del Grupo" required>
+  <button type="submit">Buscar</button>
+</form>
+<table>
+  <thead>
+  <tr>
+    <th>ID Solicitante</th>
+    <th>Nombre Solicitante</th>
+    <th>Apellido Solicitante</th>
+    <th>Materia</th>
+    <th>Grupo</th>
+    <th>Semestre</th>
+    <th>Nombre Profesor</th>
+    <th>Apellido Profesor</th>
+    <th>Aula</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="solicitud : ${solicitudes}">
+    <td th:text="${solicitud.idSolicitante}"></td>
+    <td th:text="${solicitud.nombreSolicitante}"></td>
+    <td th:text="${solicitud.apellidoSolicitante}"></td>
+    <td th:text="${solicitud.materia}"></td>
+    <td th:text="${solicitud.nombreGrupo}"></td>
+    <td th:text="${solicitud.idSemestre}"></td>
+    <td th:text="${solicitud.nombreProfesor}"></td>
+    <td th:text="${solicitud.apellidoProfesor}"></td>
+    <td th:text="${solicitud.aula}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
