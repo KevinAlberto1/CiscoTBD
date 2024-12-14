@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Editar Materia</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Editar Materia</h1>
+<form th:action="@{/materias/edit/{id}(id=${materia.idMateria})}" th:object="${materia}" method="post">
+  <label for="idMateria">ID:</label>
+  <input type="text" id="idMateria" name="idMateria" th:field="*{idMateria}" readonly>
+  <br>
+  <label for="nombreMateria">Nombre:</label>
+  <input type="text" id="nombreMateria" name="nombreMateria" th:field="*{nombreMateria}" required>
+  <br>
+  <button type="submit">Actualizar</button>
+</form>
+</body>
+</html>

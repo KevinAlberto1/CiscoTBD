@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Editar Apartado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1 {
+      color: #007BFF;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+      background-color: #ddd;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button, input[type="submit"] {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover, input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    form {
+      width: 50%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    form input[type="text"], form input[type="number"], form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<h1>Editar Apartado</h1>
+<form th:action="@{/apartados/edit/{id}(id=${apartado.id})}" th:object="${apartado}" method="post">
+  <label for="id">ID:</label>
+  <input type="number" id="id" name="id" th:field="*{id}" readonly>
+  <br>
+  <label for="aula">Aula:</label>
+  <input type="text" id="aula" name="aula" th:field="*{aula}" required>
+  <br>
+  <label for="tipoApartado">Tipo Apartado:</label>
+  <input type="text" id="tipoApartado" name="tipoApartado" th:field="*{tipoApartado}" required>
+  <br>
+  <label for="solicitante">Solicitante (ID):</label>
+  <input type="number" id="solicitante" name="solicitante" th:field="*{solicitante}" required>
+  <br>
+  <label for="fecha">Fecha:</label>
+  <input type="date" id="fecha" name="fecha" th:field="*{fecha}" required>
+  <br>
+  <label for="horaInicio">Hora Inicio:</label>
+  <input type="time" id="horaInicio" name="horaInicio" th:field="*{horaInicio}" required>
+  <br>
+  <label for="horaFin">Hora Fin:</label>
+  <input type="time" id="horaFin" name="horaFin" th:field="*{horaFin}" required>
+  <br>
+  <button type="submit">Actualizar</button>
+</form>
+</body>
+</html>

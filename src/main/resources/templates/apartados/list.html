@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Apartados</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           margin: 20px;
+           background-color: #f4f4f9;
+           color: #333;
+       }
+
+       h1 {
+           color: #007BFF;
+           text-align: center;
+           margin-bottom: 20px;
+       }
+
+       table {
+           width: 100%;
+           border-collapse: collapse;
+           margin-bottom: 20px;
+       }
+
+       table th, table td {
+           border: 1px solid #ddd;
+           padding: 8px;
+           text-align: center;
+       }
+
+       table th {
+           background-color: #007BFF;
+           color: white;
+       }
+
+       table tr:nth-child(even) {
+           background-color: #f2f2f2;
+       }
+
+       table tr:hover {
+           background-color: #ddd;
+       }
+
+       a {
+           text-decoration: none;
+           color: #007BFF;
+       }
+
+       a:hover {
+           text-decoration: underline;
+       }
+
+       button, input[type="submit"] {
+           background-color: #007BFF;
+           color: white;
+           border: none;
+           padding: 10px 15px;
+           cursor: pointer;
+           border-radius: 5px;
+       }
+
+       button:hover, input[type="submit"]:hover {
+           background-color: #0056b3;
+       }
+
+       form {
+           width: 50%;
+           margin: 0 auto;
+           padding: 20px;
+           background-color: #ffffff;
+           border: 1px solid #ddd;
+           border-radius: 10px;
+           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+       }
+
+       form label {
+           display: block;
+           margin: 10px 0 5px;
+           font-weight: bold;
+       }
+
+       form input[type="text"], form input[type="number"], form select {
+           width: 100%;
+           padding: 10px;
+           margin-bottom: 20px;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+           box-sizing: border-box;
+       }
+
+       .btn-container {
+           text-align: center;
+       }
+   </style>
+</head>
+<body>
+<h1>Apartados</h1>
+<a th:href="@{/apartados/create}">Crear Nuevo Apartado</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Aula</th>
+        <th>Tipo Apartado</th>
+        <th>Solicitante</th>
+        <th>Fecha</th>
+        <th>Hora Inicio</th>
+        <th>Hora Fin</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="apartado : ${apartados}">
+        <td th:text="${apartado.id}"></td>
+        <td th:text="${apartado.aula}"></td>
+        <td th:text="${apartado.tipoApartado}"></td>
+        <td th:text="${apartado.solicitante}"></td>
+        <td th:text="${apartado.fecha}"></td>
+        <td th:text="${apartado.horaInicio}"></td>
+        <td th:text="${apartado.horaFin}"></td>
+        <td>
+            <a th:href="@{/apartados/edit/{id}(id=${apartado.id})}">Editar</a>
+            <a th:href="@{/apartados/delete/{id}(id=${apartado.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

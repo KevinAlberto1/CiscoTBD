@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Calendario</title>
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="/fullcalendar-workspace-6.1.16/main.min.css">
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<div id="calendar"></div>
+
+<!-- FullCalendar JS -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth', // Vista inicial del calendario
+            events: '/api/apartados',   // Endpoint para cargar eventos
+            eventClick: function(info) {
+                alert('Evento: ' + info.event.title); // Muestra información al hacer clic en un evento
+            }
+        });
+        calendar.render();
+    });
+</script>
+</body>
+</html>
